@@ -5,7 +5,7 @@ import './products.css';
 
 
 const Products = (props) => {
-	const { selected, data, handler } = props;
+	const { selected, data, handler, currency } = props;
 	const productsToShow = data.products.filter(product => {
 		return product.product_type === selected;
 	})
@@ -25,7 +25,7 @@ const Products = (props) => {
 						<div id="product">
 							<img src={product.image} />
 							<h4>{product.name}</h4>
-							<p>${product.price}</p>
+							<p>${currency(product.price)}</p>
 							<Button onClick={handler.bind(this, product)} variant="primary" size="lg" block>
 								Add to cart
 							</Button>
