@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import { Row, Col, Container } from 'react-bootstrap';
 import Dropdown from './components/dropdown.js';
@@ -24,9 +24,11 @@ class App extends React.Component{
     this.setState({category: e.target.value})
   }
 
-  onAddToCart = props => {
+  onAddToCart = (props, event) => {
     let total = parseFloat(Number(this.state.total + props.price).toFixed(2));
-    console.log(total);
+    const element = document.getElementById(event.target.id);
+    element.innerHTML = "Added Item...";
+    setTimeout(() => {element.innerHTML = "Add to cart"},1000);
     this.setState(prevState => {
       console.log("added to cart " + this.state.cart)
       return {cart: [...prevState.cart, props], total: total};
@@ -74,6 +76,10 @@ class App extends React.Component{
     return cost;
   }
 
+  alert = () => {
+    alert("item added");
+  }
+
   render(){
     let main;
 
@@ -84,7 +90,7 @@ class App extends React.Component{
          <Row>
            <Col md="12">
              <Dropdown handler={this.onDropdownChange} data={data} />
-             <Products handler={this.onAddToCart} selected={this.state.category} data={data} currency={this.currency} />
+             <Products handler={this.onAddToCart} selected={this.state.category} data={data} currency={this.currency} alert={this.alert} />
            </Col>
          </Row>
        </Container>

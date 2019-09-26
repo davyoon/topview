@@ -11,6 +11,7 @@ nav{
 #logo{
 	padding: 12px 16px 12px 16px;
 	margin-left: -20px;
+	cursor: pointer;
 }
 
 #shopping{
@@ -19,6 +20,7 @@ nav{
 	top: 0px;
 	width:100px;
 	height:45px;
+	cursor: pointer;
 }
 
 #shopping img{
